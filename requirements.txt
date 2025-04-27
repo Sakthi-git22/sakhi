@@ -1,0 +1,11 @@
+flask
+nltk
+transformers
+opencv
+MediaPipe
+dlib
+deepface
+face_recognition
+speechrecognition
+pyaudio
+TensorFlow
