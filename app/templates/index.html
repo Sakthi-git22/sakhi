@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>🎤 Interview Preparation</h1>
+
+        <div class="content">
+            <!-- Left: Question Section -->
+            <div class="left-section">
+                <div class="question-box">
+                    <h2>Question:</h2>
+                    <p><strong>{{ question['question'] }}</strong></p>
+                </div>
+
+                <!-- Answer Input Section -->
+                <form action="/analyze" method="POST">
+                    <input type="hidden" name="question" value="{{ question['question'] }}">
+                    <label for="answer">✍️ Your Answer:</label><br>
+                    <textarea id="answer" name="answer" rows="4" required></textarea><br><br>
+                    
+                    <!-- Voice input section -->
+                    <button type="button" id="start-recording">🎙️ Start Recording</button>
+                    <p id="status">Click to start voice recording.</p>
+                    <br><br>
+                    <button type="submit" id="analyze-btn" disabled>🔍 Analyze</button>
+                </form>
+            </div>
+
+            <!-- Right: Video & Feedback Section -->
+            <div class="right-section">
+                <!-- Camera & Video Feed -->
+                <div class="video-container">
+                    <video id="video" autoplay muted playsinline></video>
+                    <p id="status">🎥 Checking camera access...</p>
+                </div>
+
+                <!-- Feedback Section -->
+                {% if feedback %}
+                <div class="feedback-box">
+                    <h2>📢 Feedback:</h2>
+                    {% if feedback is string %}
+                        <p>{{ feedback }}</p>  <!-- Display as text -->
+                    {% else %}
+                        <ul>
+                            {% for item in feedback %}
+                                <li>{{ item }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+
+                    <!-- Suggested Answer -->
+                    {% if suggested_answer %}
+                        <p><strong>Suggested Answer:</strong> {{ suggested_answer }}</p>
+                    {% endif %}
+                </div>
+                {% endif %}
+
+                <!-- Next Question Button -->
+                {% if show_next %}
+                <form action="/next" method="POST">
+                    <button type="submit">➡️ Next Question</button>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

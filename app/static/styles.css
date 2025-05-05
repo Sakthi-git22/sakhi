@@ -1,0 +1,130 @@
+/* Apply background image */
+body {
+    font-family: Arial, sans-serif;
+    background: url("../static/images/bg.jpg") no-repeat center center fixed;
+    background-size: cover;  /* Ensures the image covers the entire background */
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Make sure the container has some background color for readability */
+.container {
+    max-width: 900px;
+    margin: 50px auto;
+    background: rgba(204, 208, 209, 0); /* Semi-transparent black */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+/* Two-column layout */
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+/* Left Section (Question & Input) */
+.left-section {
+    width: 50%;
+    background: #00558078;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/* Right Section (Video & Feedback) */
+.right-section {
+    width: 45%;
+}
+
+/* Question Box */
+.question-box {
+    background: #0077b3;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* Video Container */
+.video-container {
+    width: 100%;
+    height: 220px;
+    border: 3px solid white;
+    background-color: black;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Feedback Box */
+.feedback-box {
+    background: #00a3cc;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+/* Textarea Styling */
+textarea {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #1705e05e;
+    color: rgb(222, 221, 228);
+    resize: none;
+    overflow-y: auto;
+}
+
+/* Button Styling */
+button {
+    background-color: #0099cc;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:disabled {
+    background-color: #555;
+}
+
+button:hover:not(:disabled) {
+    background-color: #0077b3;
+}
+#video-feedback {
+    margin-top: 20px;
+    padding: 15px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+}
+
+#video-feedback p {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .left-section, .right-section {
+        width: 90%;
+    }
+}
